@@ -28,7 +28,7 @@ func (b *MongoConfig) Handler() string {
 	return "mongodb"
 }
 
-func NewMongoStore(mongoConf *MongoConfig) (*ssMongoHandler, error) {
+func NewMongoStore(mongoConf *MongoConfig) (store.Store, error) {
 	client, err := mongo.NewClient(options.Client().ApplyURI(mongoConf.Host))
 	if err != nil {
 		return nil, err
